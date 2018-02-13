@@ -24,16 +24,16 @@ Extended Selenium2 Library - a web testing library with AngularJS support.
 from robot.api import logger
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.remote.webelement import WebElement
-from Selenium2Library.keywords import _ElementKeywords
+from SeleniumLibrary.keywords import ElementKeywords
 from ExtendedSelenium2Library.locators import ExtendedElementFinder
 
 
-class ExtendedElementKeywords(_ElementKeywords):
+class ExtendedElementKeywords(ElementKeywords):
     """ExtendedElementKeywords are web element execution in the requested browser."""
 
-    def __init__(self):
-        super(ExtendedElementKeywords, self).__init__()
-        self._element_finder = ExtendedElementFinder()
+    def __init__(self, ctx):
+        super(ExtendedElementKeywords, self).__init__(ctx)
+        self._element_finder = ExtendedElementFinder(ctx)
 
     # pylint: disable=arguments-differ
     def click_element(self, locator, skip_ready=False):
@@ -202,7 +202,7 @@ class ExtendedElementKeywords(_ElementKeywords):
         Examples:
         | Is Element Visible | css=div.class |
         """
-        return self._is_visible(locator)
+        return self.is_visible(locator)
 
     def scroll_element_into_view(self, locator):
         """Scrolls an element from given ``locator`` into view.

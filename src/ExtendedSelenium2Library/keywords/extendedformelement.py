@@ -21,14 +21,14 @@
 Extended Selenium2 Library - a web testing library with AngularJS support.
 """
 
-from Selenium2Library.keywords import _FormElementKeywords
+from SeleniumLibrary.keywords import FormElementKeywords
 
 
-class ExtendedFormElementKeywords(_FormElementKeywords):
+class ExtendedFormElementKeywords(FormElementKeywords):
     """ExtendedFormElementKeywords are form element execution in the requested browser."""
 
-    def __init__(self):
-        super(ExtendedFormElementKeywords, self).__init__()
+    def __init__(self, ctx):
+        super(ExtendedFormElementKeywords, self).__init__(ctx)
 
     # pylint: disable=arguments-differ
     def click_button(self, locator, skip_ready=False):

@@ -36,8 +36,8 @@ Test S2L With Confirm Action
 *** Keywords ***
 Suite Setup
     [Documentation]  Suite setup for all S2L test cases
-    Import Library  Selenium2Library
-    Set Library Search Order  Selenium2Library
+    Import Library  SeleniumLibrary
+    Set Library Search Order  SeleniumLibrary
     Open Browser  file://${CURDIR}/../html/issue_3.html  ff
     Choose Ok On Next Confirmation
 

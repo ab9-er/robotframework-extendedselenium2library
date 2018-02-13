@@ -22,13 +22,13 @@ Extended Selenium2 Library - a web testing library with AngularJS support.
 """
 
 from re import sub
-from Selenium2Library.keywords import _JavaScriptKeywords
+from SeleniumLibrary.keywords import JavaScriptKeywords
 
 
-class ExtendedJavascriptKeywords(_JavaScriptKeywords):
+class ExtendedJavascriptKeywords(JavaScriptKeywords):
     """ExtendedJavascriptKeywords are JavaScript related execution in the requested browser."""
-    def __init__(self):
-        super(ExtendedJavascriptKeywords, self).__init__()
+    def __init__(self, ctx):
+        super(ExtendedJavascriptKeywords, self).__init__(ctx)
 
     def execute_async_javascript_with_replaced_variables(self, *code):
         # pylint: disable=line-too-long

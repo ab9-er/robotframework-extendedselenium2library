@@ -22,7 +22,7 @@ Extended Selenium2 Library - a web testing library with AngularJS support.
 """
 
 from robot.libraries.BuiltIn import BuiltIn
-from Selenium2Library import Selenium2Library
+from SeleniumLibrary import SeleniumLibrary
 from ExtendedSelenium2Library.decorators import inherit_docs
 from ExtendedSelenium2Library.keywords import ExtendedElementKeywords
 from ExtendedSelenium2Library.keywords import ExtendedFormElementKeywords
@@ -36,7 +36,7 @@ __version__ = get_version()
 
 # pylint: disable=too-many-ancestors
 @inherit_docs
-class ExtendedSelenium2Library(Selenium2Library, ExtendedElementKeywords,
+class ExtendedSelenium2Library(SeleniumLibrary, ExtendedElementKeywords,
                                ExtendedFormElementKeywords, ExtendedJavascriptKeywords,
                                ExtendedSelectElementKeywords, ExtendedWaitingKeywords):
     # pylint: disable=line-too-long
@@ -96,8 +96,8 @@ class ExtendedSelenium2Library(Selenium2Library, ExtendedElementKeywords,
     # pylint: disable=line-too-long
 
     # let's not confuse people with different name and version
-    __doc__ += Selenium2Library.__doc__.split('desired location.', 1)[-1]. \
-        replace('Selenium2Library', 'ExtendedSelenium2Library'). \
+    __doc__ += SeleniumLibrary.__doc__.split('desired location.', 1)[-1]. \
+        replace('SeleniumLibrary', 'ExtendedSelenium2Library'). \
         replace('version 1.7', 'version 0.4.9'). \
         replace('Version 1.7.0', 'version 0.4.9')
 
@@ -170,7 +170,7 @@ class ExtendedSelenium2Library(Selenium2Library, ExtendedElementKeywords,
             'poll_frequency': float(kwargs.pop('poll_frequency', 0.2)),
         }
         self._builtin = BuiltIn()
-        Selenium2Library.__init__(self, implicit_wait=implicit_wait, **kwargs)
+        SeleniumLibrary.__init__(self, implicit_wait=implicit_wait, **kwargs)
         ExtendedElementKeywords.__init__(self)
         ExtendedFormElementKeywords.__init__(self)
         ExtendedJavascriptKeywords.__init__(self)

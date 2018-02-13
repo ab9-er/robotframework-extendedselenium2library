@@ -21,7 +21,7 @@
 Extended Selenium2 Library - a web testing library with AngularJS support.
 """
 
-from Selenium2Library.locators import ElementFinder
+from SeleniumLibrary.locators import ElementFinder
 
 
 class ExtendedElementFinder(ElementFinder):
@@ -37,8 +37,8 @@ class ExtendedElementFinder(ElementFinder):
                          "function(item){var binding=angular.element(item).data('$binding');" \
                          "if(binding){var name=binding.exp||binding[0].exp||binding;%(handler)s}})"
 
-    def __init__(self):
-        ElementFinder.__init__(self)
+    def __init__(self, ctx):
+        ElementFinder.__init__(self, ctx)
         strategies = {
             'binding': self._find_by_ng_binding,
             'button': self._find_by_button_text,

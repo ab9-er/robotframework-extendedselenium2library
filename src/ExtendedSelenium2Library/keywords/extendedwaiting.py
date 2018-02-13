@@ -28,15 +28,15 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.expected_conditions import staleness_of, visibility_of
 from selenium.webdriver.support.ui import WebDriverWait
-from Selenium2Library.keywords import _WaitingKeywords
+from SeleniumLibrary.keywords import WaitingKeywords
 from ExtendedSelenium2Library.decorators import inherit_docs
 
 
 @inherit_docs
-class ExtendedWaitingKeywords(_WaitingKeywords):
+class ExtendedWaitingKeywords(WaitingKeywords):
     """ExtendedWaitingKeywords are waiting related execution towards the requested browser."""
-    def __init__(self):
-        super(ExtendedWaitingKeywords, self).__init__()
+    def __init__(self, ctx):
+        super(ExtendedWaitingKeywords, self).__init__(ctx)
 
     def fast_wait_until_page_contains(self, text, excludes=None, timeout=None, error=None):
         """Waits until ``text`` appears on current page.

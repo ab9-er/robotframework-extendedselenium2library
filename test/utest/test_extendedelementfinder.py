@@ -27,7 +27,7 @@ import unittest
 import mock
 from ExtendedSelenium2Library.locators import ExtendedElementFinder
 from selenium.webdriver.remote.webelement import WebElement
-from Selenium2Library.locators import ElementFinder
+from SeleniumLibrary.locators import ElementFinder
 
 
 class ExtendedElementFinderTests(unittest.TestCase):
@@ -42,7 +42,9 @@ class ExtendedElementFinderTests(unittest.TestCase):
                                    'sizzle', 'tag', 'xpath']
         self.driver = mock.Mock()
         self.driver.session_id = 'session'
-        self.finder = ExtendedElementFinder()
+        ctx = mock.Mock()
+        ctx._browser = mock.Mock()
+        self.finder = ExtendedElementFinder(ctx)
         self.finder._filter_elements = mock.Mock()
         self.finder._find_by_css_selector = mock.Mock()
         self.finder.BUTTON_TEXT_WRAPPER = 'return buttons;%(handler)s'
